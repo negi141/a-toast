@@ -12,7 +12,7 @@ https://negi141.github.io/a-toast/
 
 ## Usage
 ```html
-<link rel="stylesheet" media="all" href="a-toast.css" />
+<link rel="stylesheet" href="a-toast.css" />
 
 <script src="a-toast.js"></script>
 ```
