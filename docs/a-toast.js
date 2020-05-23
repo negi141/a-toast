@@ -4,11 +4,11 @@
 * by Takuto Negishi.
 */
 // トースト通知クラス
-var aToast = (function(){
+const aToast = (function(){
     'use strict';
-    var timer;
-    var speed;
-    var position;
+    let timer;
+    let speed;
+    let position;
     // コンストラクタ
     function aToast() {
         this.speed = 3000;
@@ -21,12 +21,12 @@ var aToast = (function(){
     }
     // メッセージを表示
     aToast.prototype.show = function(message, style) {
-        var addSpeedClass = (style === undefined || style === '') ? '' : 'a-toast-' + style;
-        var addPositionClass = 'a-toast-pos-' + this.position;
+        let addSpeedClass = (style === undefined || style === '') ? '' : 'a-toast-' + style;
+        let addPositionClass = 'a-toast-pos-' + this.position;
         $('.a-toast').remove();
         clearTimeout(this.timer);
         $('body').append('<div class="a-toast ' + addSpeedClass + ' ' + addPositionClass + '">' + message + '</div>');
-        var leftpos = $('body').width()/2 - $('.a-toast').outerWidth()/2;
+        let leftpos = $('body').width()/2 - $('.a-toast').outerWidth()/2;
         $('.a-toast').css('left', leftpos).hide().fadeIn('fast');
         this.timer = setTimeout(function() {
             $('.a-toast').fadeOut('slow',function(){
