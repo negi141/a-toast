@@ -1,0 +1,15 @@
+{
+  "name": "a-toast",
+  "version": "0.7.0",
+  "description": "Javascript library for toast notification",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "/negi141/a-toast"
+  },
+  "author": "Takuto Negishi",
+  "license": "ISC"
+}

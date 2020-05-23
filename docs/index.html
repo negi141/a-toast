@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>a-toast Demo</title>
+  
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" media="all" href="app.css" />
+
+  <link rel="stylesheet" media="all" href="a-toast.css" />
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="a-toast.js"></script>
+  
+  <script>
+    $(function() {
+      var toast = new aToast();
+
+      $('#btnShow').click(function(){
+        let message = $('#message').val();
+        let speed = $('#speed').val();
+        let style = $('input[name="style"]:checked').val();
+        let position = $('input[name="position"]:checked').val();
+        toast.setOption(speed, position);
+        toast.show(message, style);
+      });
+    });
+  </script>
+
+  </head>
+
+  <body>
+
+  <div class="wrap">
+    <div class="container">
+
+      <h1>a-toast Demo</h1>
+
+      <div class="form-group">
+        <label>メッセージ</label>
+        <input type="text" id="message" value="トースト通知を表示する" class="form-control"/>
+        <small class="form-text text-muted">改行を入れたい場合は&lt;br/&gt;で</small>
+      </div>
+      <div class="form-group">
+        <label>スタイル</label>
+        <div class="form-check">
+          <label class="form-check-label"><input type="radio" name="style" value="" checked class="form-check-input">デフォルト</label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label"><input type="radio" name="style" value="success" class="form-check-input">成功</label>
+        </div>
+          <div class="form-check">
+          <label class="form-check-label"><input type="radio" name="style" value="warn" class="form-check-input">警告</label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label"><input type="radio" name="style" value="danger" class="form-check-input">エラー</label>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>位置</label>
+        <div class="form-check">
+          <label class="form-check-label"><input type="radio" name="position" value="top" checked class="form-check-input">上部</label>
+        </div>
+        
+          <div class="form-check">
+            <label class="form-check-label"><input type="radio" name="position" value="bottom" class="form-check-input">下部</label>
+          </div>
+      </div>
+      
+      <div class="form-group">
+        <label>表示時間(ミリ秒)</label>
+        <input type="text" id="speed" value="3000" class="form-control"/>
+      </div>
+
+      <button id="btnShow" class="btn btn-primary">トースト通知を表示</button>
+    </div>
+  </div>
+  </body>
+</html>
