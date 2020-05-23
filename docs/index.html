@@ -14,28 +14,35 @@
 
   <link rel="stylesheet" media="all" href="a-toast.css" />
 
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <script src="a-toast.js"></script>
   
   <script>
-    $(function() {
+    window.onload = function() {
       var toast = new aToast();
 
-      $('#btnShow').click(function(){
-        let message = $('#message').val();
-        let speed = $('#speed').val();
-        let style = $('input[name="style"]:checked').val();
-        let position = $('input[name="position"]:checked').val();
+      document.getElementById('btnShow').addEventListener('click', function(){
+        let message = document.getElementById('message').value;
+        let speed = document.getElementById('speed').value;
+        let style = checkedValue('style');
+        let position = checkedValue('position');
+
         toast.setOption(speed, position);
         toast.show(message, style);
-      });
-    });
+      }, false);
+
+      function checkedValue(name){
+        let elements = document.getElementsByName(name), val = '';
+        for (let i = 0; i < elements.length; i++) {
+          if (elements[i].checked) {
+            val = elements[i].value;
+            break;
+          }
+        }
+        return val;
+      }
+    };
   </script>
 
   </head>
@@ -50,7 +57,6 @@
       <div class="form-group">
         <label>メッセージ</label>
         <input type="text" id="message" value="トースト通知を表示する" class="form-control"/>
-        <small class="form-text text-muted">改行を入れたい場合は&lt;br/&gt;で</small>
       </div>
       <div class="form-group">
         <label>スタイル</label>
@@ -81,7 +87,7 @@
       
       <div class="form-group">
         <label>表示時間(ミリ秒)</label>
-        <input type="text" id="speed" value="3000" class="form-control"/>
+        <input type="text" id="speed" value="4000" class="form-control"/>
       </div>
 
       <button id="btnShow" class="btn btn-primary">トースト通知を表示</button>

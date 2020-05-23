@@ -1,4 +1,4 @@
-.a-toast{
+.a-toast {
   position: fixed;
   display: inline-block;
   background: rgba(0, 0, 0, 0.6);
@@ -10,6 +10,14 @@
   z-index: 1000;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   font-size: 13px;
+
+  transition-property: opacity; 
+  transition-duration: 0.8s;
+  opacity: 0;
+}
+
+.a-toast-show {
+  opacity: 1;
 }
 
 .a-toast-pos-top{top: 50px;}

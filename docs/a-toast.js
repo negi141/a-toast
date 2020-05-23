@@ -11,7 +11,7 @@ const aToast = (function(){
     let position;
     // コンストラクタ
     function aToast() {
-        this.speed = 3000;
+        this.speed = 4000;
         this.position = 'top';
     }
     // 表示時間(speed)と、位置(top or bottom)を設定
@@ -23,15 +23,22 @@ const aToast = (function(){
     aToast.prototype.show = function(message, style) {
         let addSpeedClass = (style === undefined || style === '') ? '' : 'a-toast-' + style;
         let addPositionClass = 'a-toast-pos-' + this.position;
-        $('.a-toast').remove();
+
+        this.hide();
+
         clearTimeout(this.timer);
-        $('body').append('<div class="a-toast ' + addSpeedClass + ' ' + addPositionClass + '">' + message + '</div>');
-        let leftpos = $('body').width()/2 - $('.a-toast').outerWidth()/2;
-        $('.a-toast').css('left', leftpos).hide().fadeIn('fast');
+
+        let t = document.createElement("div");
+        t.className = 'a-toast ' + addSpeedClass + ' ' + addPositionClass;  
+        t.appendChild(document.createTextNode(message));
+        document.body.appendChild(t);
+
+        let leftpos = document.body.clientWidth/2 - t.clientWidth/2;
+        t.style.left = leftpos + 'px';
+        t.classList.add("a-toast-show");
+
         this.timer = setTimeout(function() {
-            $('.a-toast').fadeOut('slow',function(){
-                $(this).remove();
-            });
+            t.classList.remove("a-toast-show");
         }, this.speed);
     };
     // successのスタイルでメッセージを表示
@@ -47,10 +54,11 @@ const aToast = (function(){
         this.show(message, 'danger');
     }
     // 明示的にメッセージを消したい場合は使う
-    aToast.prototype.hide = function() {
-        $('.a-toast').fadeOut('slow',function() {
-            $(this).remove();
-        });
+    aToast.prototype.hide = function() {        
+        let old = document.getElementsByClassName('a-toast');
+        for (let i = 0; i < old.length; ++i) {
+            old[i].parentNode.removeChild(old[i]);
+        }
     }
     return aToast;
 })();
