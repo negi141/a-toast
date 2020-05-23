@@ -11,5 +11,8 @@
     "url": "/negi141/a-toast"
   },
   "author": "Takuto Negishi",
-  "license": "ISC"
+  "license": "ISC",
+  "files": [
+    "build"
+  ]
 }
