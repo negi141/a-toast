@@ -5,7 +5,9 @@ A JavaScript library for toast notification
 - Does not depend on jQuery.
 
 ## Install
-``npm install negi141/a-toast``
+```
+npm install negi141/a-toast
+```
 
 ## Demo
 https://negi141.github.io/a-toast/
