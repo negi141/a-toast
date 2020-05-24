@@ -21,7 +21,7 @@ https://negi141.github.io/a-toast/
 var toast = new aToast();
 
 // Set options (optional)
-//   speed : millisecond. default=4000.
+//   speed : Display time. millisecond. default=4000.
 //   position : Display position. 'top' or 'bottom'. default='top'.
 toast.setOption(speed, position);
 
